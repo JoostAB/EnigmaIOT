@@ -1,3 +1,7 @@
+In this version I'll try to implement the option to create a gateway of two seperate esp devices. One for ESP-Now communication, the second for MQTT.
+Last version of original project with this wat 5.0. Changes where made in commit [a382009adbd](https://github.com/JoostAB/EnigmaIOT/tree/a382009adbdcc8a0555113adef97bf485e29f312).
+(Link is to my fork).
+
 # EnigmaIoT
 
 <img src="https://github.com/gmag11/EnigmaIOT/raw/master/logo/logo%20text%20under.svg?sanitize=true" alt="EnigmaIoT Logo" width="50%"/>
