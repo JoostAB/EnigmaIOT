@@ -6,4 +6,4 @@
  * @brief Bootstrap file for project if opened in Arduino IDE
  */
 
-#include "main.cpp"
+#include "main.h"
