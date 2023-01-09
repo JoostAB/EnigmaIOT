@@ -6,8 +6,7 @@
  * @brief Gateway based on EnigmaIoT over ESP-NOW with serial output module, based on Dummy Gateway by German Martin
  */
 
-#include <Arduino.h>
-
+#include "main.h"
 #include <GwOutput_generic.h>
 #include "GwOutput_serial.h"
 
@@ -57,6 +56,7 @@ TimerHandle_t connectionLedTimer;
 #elif defined(ESP8266)
 ETSTimer connectionLedTimer;
 #endif // ESP32
+
 
 const int connectionLed = BUILTIN_LED;
 boolean connectionLedFlashing = false;
