@@ -57,12 +57,10 @@ TimerHandle_t connectionLedTimer;
 ETSTimer connectionLedTimer;
 #endif // ESP32
 
-
 const int connectionLed = BUILTIN_LED;
 boolean connectionLedFlashing = false;
 
 void flashConnectionLed (void* led) {
-	//digitalWrite (*(int*)led, !digitalRead (*(int*)led));
 	digitalWrite (BUILTIN_LED, !digitalRead (BUILTIN_LED));
 }
 
@@ -252,7 +250,9 @@ TaskHandle_t gwoutput_handle = NULL;
 
 void setup () {
 	Serial.begin (115200); Serial.println (); Serial.println ();
-
+	Serial2.begin(115200);
+	GwOutput.initCom(&Serial2);
+	
 #ifdef ESP32
 	// Turn-off the 'brownout detector' to avoid random restarts during wake up,
 	// normally due to bad quality regulator on board
@@ -316,7 +316,19 @@ void setup () {
 }
 
 void loop () {
+	// if (com->available()) {
+	// 	char c = com->read();
+	// 	if (c == 10 || c = 13) {
+	// 		// Serial input complete
+	// 		DEBUG_VERBOSE("Serial input received: %s", comBuff);
 
+	// 		comBuff = "";
+	// 	} else {
+	// 		// Add input char to buff
+	// 		comBuff += c;
+	// 	}
+	// }
+	
 	GwOutput.loop ();
 	EnigmaIOTGateway.handle ();
 

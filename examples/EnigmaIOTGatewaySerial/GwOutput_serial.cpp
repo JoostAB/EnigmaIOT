@@ -44,12 +44,41 @@ void GatewayOutput_serial::configManagerExit (bool status) {
 
 bool GatewayOutput_serial::begin () {
     DEBUG_INFO ("Begin");
+    comBuff = "";
     return true;
 }
 
 
 void GatewayOutput_serial::loop () {
+    if (com->available()) {
+		char c = com->read();
+		if (c == 10 || c == 13) {
+			// Serial input complete
+			DEBUG_VERBOSE("Serial input received: %s", comBuff);
+			handleComInput();
+            comBuff = "";
+		} else {
+			// Add input char to buff
+			comBuff += c;
+		}
+	}
+}
 
+void GatewayOutput_serial::initCom(HardwareSerial* c) {
+    com = c;
+}
+
+bool GatewayOutput_serial::handleComInput() {
+    // Check message header
+    if (!comBuff.startsWith(MSG_START)) {
+        DEBUG_ERROR("Invalid message header. Ignoring");
+        return false;
+    }
+
+    // Get character after MSG_START
+    char act = comBuff.charAt(3);
+
+    return true;
 }
 
 bool GatewayOutput_serial::outputDataSend (char* address, char* data, size_t length, GwOutput_data_type_t type) {

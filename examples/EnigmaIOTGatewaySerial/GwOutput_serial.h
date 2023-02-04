@@ -15,6 +15,8 @@
 #include "WProgram.h"
 #endif
 
+#define MSG_START "###"
+
 #include <EnigmaIOTGateway.h>
 #include <GwOutput_generic.h>
 
@@ -29,6 +31,11 @@ protected:
 	  */
 	bool saveConfig ();
 
+	bool handleComInput();
+
+	String comBuff;
+	HardwareSerial* com;
+
 public:
 	//String netName; ///< @brief EnigmaIOT network name
 	//String clientId; ///< @brief clientId
@@ -36,6 +43,8 @@ public:
 
 	//virtual int send () = 0;
 	//virtual void onReveive () = 0;
+
+	void initCom(HardwareSerial* c);
 
 	/**
 	  * @brief Called when wifi manager starts config portal
