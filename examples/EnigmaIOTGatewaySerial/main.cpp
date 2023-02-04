@@ -57,6 +57,7 @@ TimerHandle_t connectionLedTimer;
 ETSTimer connectionLedTimer;
 #endif // ESP32
 
+
 const int connectionLed = BUILTIN_LED;
 boolean connectionLedFlashing = false;
 
