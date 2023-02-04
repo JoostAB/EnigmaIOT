@@ -1,4 +1,4 @@
-# EnigmaIOT Gateway Dummy
+# EnigmaIOT Gateway Serial
 
 This example represent the basis to develop an EnigmaIOT gateway. You may build a gateway that register measurements from node sensors to an SD or uses LoRaWAN as output instead MQTT.
 
